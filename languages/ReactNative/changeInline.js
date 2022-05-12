@@ -2,6 +2,56 @@
 
 
 
+updateExternalCss = (pageContent) =>{
+    
+    var editedPageContenet = pageContent;
+    var cssContent = "";
+    var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
+    var cssContentNotClean = pageContent.split("style={");
+    var pageLine = pageContent.split("\n").length;
+    if(isExternalCss(cssContentNotClean[1])){
+        
+      var name =  getExternalCssName(cssContentNotClean[1]);
+      var parameters = getParameters(cssContentNotClean[1]);
+      var editedPageContenet = addCssToExternalCss(pageContent,styleSheetExternalContent[1],name,parameters);
+
+    }
+console.log(editedPageContenet);
+    return {
+        pageLine: pageLine,
+         pageContent: editedPageContenet
+    }
+
+}
+
+
+addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
+    if(externalCss.includes(name)){
+        externalCss =externalCss.split(name)[1];
+        externalCss =externalCss.split("}")[0];
+      return  pageContent.replace(externalCss,externalCss+", \n "+parameters.split(",").join(", \n") +"}");
+    }
+    return "";
+}
+
+isExternalCss = (cssContent) => {
+    var css = cssContent.split("}")[0];
+   return !css.includes("{");
+
+}
+
+getParameters = (cssContent) => {
+    var params = cssContent.split("INParam:")[1];
+        params = params.split("]")[0];
+    return params.trim();
+}
+
+getExternalCssName = (cssContent) => {
+    var cssName = cssContent.split("}")[0];
+    
+    return cssName.split(".")[1];
+}
+
  var changeInline = (pageContent) =>{
     // React Native has a function
     // styleSheet where all of the CSS for the page is added
@@ -19,11 +69,68 @@
          getCssContent(inlineCss[x]) 
          +"}, \n";
        
-         editedPageContenet =  removeInlineCss(editedPageContenet,inlineCss[x],name);   
+         editedPageContenet =  removeInlineCss(editedPageContenet,inlineCss[x],"styles."+name);   
 
     }
 
-    var pageContentDone = editedPageContenet + "\n \n \n StyleSsheet=({ "+ cssContent  + "}) "
+    var pageContentDone = editedPageContenet + "\n \n \n  const styles = StyleSheet.create({ \n "+ cssContent.split(",").join(", \n")  + "}) "
+
+   return {
+       pageLine: pageLine,
+        pageContent: pageContentDone
+   }
+
+
+}
+
+
+
+
+
+var generateRandomFourlatterWord = (names)=> {
+    var albhabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    var word = "";
+    for(var x = 0 ; x < 5;x++){
+        word = word + albhabet[Math.floor(Math.random() * 25)];
+    }
+
+    if(names.includes(word)){
+          generateRandomFourlatterWord();
+        
+    }
+
+    return word;
+}
+
+
+
+
+var changeInlineRandom = (pageContent) =>{
+    // React Native has a function
+    // styleSheet where all of the CSS for the page is added
+   
+    var editedPageContenet = pageContent;
+    var cssContent = "";
+
+    var pageLine = pageContent.split("\n").length;
+    var inlineCss = pageContent.split("style={{");
+    var generatedNames = [];
+
+    for(var x = 1; x < inlineCss.length;x++){
+        
+        var name = generateRandomFourlatterWord(generatedNames);
+        
+        generatedNames.push(name);  
+       
+         cssContent = cssContent+ name+":{ \n "+
+         getCssContent(inlineCss[x]) 
+         +"}, \n";
+       
+         editedPageContenet =  removeInlineCss(editedPageContenet,inlineCss[x],"styles."+name);   
+
+    }
+
+    var pageContentDone = editedPageContenet + "\n \n \n  const styles = StyleSheet.create({ \n "+ cssContent.split(",").join(", \n")  + "}) "
 
    return {
        pageLine: pageLine,
@@ -50,5 +157,7 @@ return pageContentEdited;
 }
 
 module.exports = {
-    changeInline:changeInline
+    changeInline:changeInline,
+    changeInlineRandom:changeInlineRandom,
+    updateExternalCss:updateExternalCss
 }

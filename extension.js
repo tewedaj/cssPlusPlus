@@ -16,24 +16,12 @@ let disposable = vscode.commands.registerCommand('reactNativeCss.helloWorld', fu
 		vscode.window.showInformationMessage('Hello World from react-native-css!');
 	});
 
-var outLineCss = "";
+
+//Update  React Native inline CSS with Name
 	let updateCss = vscode.commands.registerCommand('reactNativeCss.CssUpdate',function(){
-		outLineCss = vscode.window.activeTextEditor.document.getText();
-	// var codeLine =outLineCss.split("\n").length;
-	// var css =	outLineCss.split("style={{")
-	var reacNativeCss = ReactNative.changeInline(outLineCss);
-	
-		// var styleSheet = "";
-		// for(var x = 1 ; x < css.length;x++){
-		
-		// 	var name = css[x-1].split("cn:")[css[x-1].split("cn:").length-1].split("]")[0];
+		var pageContent = vscode.window.activeTextEditor.document.getText();
 
-		// 	data = "oner:{ \n "+	css[x].split("}}")[0] +"}, \n";
-		// outLineCss =outLineCss.replace("{"+css[x].split("}}")[0]+"}",name);
-		// 	styleSheet = styleSheet + data;
-		// }
-
-		
+	var reacNativeCss = ReactNative.changeInline(pageContent);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reacNativeCss.pageLine,0),reacNativeCss.pageContent);
 		});
@@ -41,8 +29,37 @@ var outLineCss = "";
 		vscode.window.showInformationMessage("It's done :)");
 	})
 
+
+//Update  React Native inline CSS with out Name
+let ReactNativeNoName = vscode.commands.registerCommand('reactNativeCss.ReactNativeCssUpdateNoName',function(){
+	var pageContent = vscode.window.activeTextEditor.document.getText();
+
+var reacNativeCss = ReactNative.changeInlineRandom(pageContent);
+	vscode.window.activeTextEditor.edit((editBuilder) => {
+		editBuilder.replace(new vscode.Range(0,0,reacNativeCss.pageLine,0),reacNativeCss.pageContent);
+	});
+
+	vscode.window.showInformationMessage("It's done :)");
+})
+
+
+//Update  React Native External Css
+let externalCssReactNative = vscode.commands.registerCommand('reactNativeCss.ReactNativeCssExternalUpdate',function(){
+	var pageContent = vscode.window.activeTextEditor.document.getText();
+
+var reacNativeCss = ReactNative.updateExternalCss(pageContent);
+	vscode.window.activeTextEditor.edit((editBuilder) => {
+		editBuilder.replace(new vscode.Range(0,0,reacNativeCss.pageLine,0),reacNativeCss.pageContent);
+	});
+
+	vscode.window.showInformationMessage("It's done :)");
+})
+
+
 	context.subscriptions.push(disposable);
-	context.subscriptions.push(updateCss);
+	context.subscriptions.push(updateCss);;
+	context.subscriptions.push(ReactNativeNoName);
+	context.subscriptions.push(externalCssReactNative);
 }
 
 

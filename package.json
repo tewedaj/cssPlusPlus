@@ -11,7 +11,9 @@
 	],
 	"activationEvents": [
 		"onCommand:reactNativeCss.helloWorld",
-		"onCommand:reactNativeCss.CssUpdate"
+		"onCommand:reactNativeCss.CssUpdate",
+		"onCommand:reactNativeCss.ReactNativeCssUpdateNoName",
+		"onCommand:reactNativeCss.ReactNativeCssExternalUpdate"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -22,7 +24,15 @@
 			},
 			{
 				"command": "reactNativeCss.CssUpdate",
-				"title": "yoooo"
+				"title": "CssInline-React Native[N]"
+			},
+			{
+				"command": "reactNativeCss.ReactNativeCssUpdateNoName",
+				"title": "CssInline-React Native[R]"
+			},
+			{
+				"command": "reactNativeCss.ReactNativeCssExternalUpdate",
+				"title": "CssExternal-React Native"
 			}
 		]
 	},
