@@ -42,8 +42,14 @@ isExternalCss = (cssContent) => {
 
 getParameters = (cssContent) => {
     var params = cssContent.split("INParam:")[1];
+    if(!params){
+        //some error meseage
+    }else{
         params = params.split("]")[0];
-    return params.trim();
+
+        return params.trim();
+    }
+    return "";
 }
 
 getExternalCssName = (cssContent) => {
