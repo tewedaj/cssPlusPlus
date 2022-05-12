@@ -1,24 +1,19 @@
 # reactNativeCss README
 
-This is the README for your extension "reactNativeCss". After writing up a brief description, we recommend including the following sections.
+Don't worry about your CSS any more, write it inline and i will change it to the way it should be
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
+Automaticly Change inline CSS to external Css , with name or with random name for the style name
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Must Love inline CSS :) 
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Nothing here yet
 
 For example:
 
