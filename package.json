@@ -1,5 +1,5 @@
 {
-	"name": "reactNativeCss",
+	"name": "inlineCssChanger",
 	"displayName": "react-native-css",
 	"description": "Make writing React Native css a better experiance",
 	"version": "0.0.1",
@@ -10,28 +10,28 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:reactNativeCss.helloWorld",
-		"onCommand:reactNativeCss.CssUpdate",
-		"onCommand:reactNativeCss.ReactNativeCssUpdateNoName",
-		"onCommand:reactNativeCss.ReactNativeCssExternalUpdate"
+		"onCommand:inlineCssChanger.helloWorld",
+		"onCommand:inlineCssChanger.CssUpdate",
+		"onCommand:inlineCssChanger.inlineCssChangerUpdateNoName",
+		"onCommand:inlineCssChanger.inlineCssChangerExternalUpdate"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "reactNativeCss.helloWorld",
+				"command": "inlineCssChanger.helloWorld",
 				"title": "Hello World"
 			},
 			{
-				"command": "reactNativeCss.CssUpdate",
+				"command": "inlineCssChanger.CssUpdate",
 				"title": "CssInline-React Native[N]"
 			},
 			{
-				"command": "reactNativeCss.ReactNativeCssUpdateNoName",
+				"command": "inlineCssChanger.inlineCssChangerUpdateNoName",
 				"title": "CssInline-React Native[R]"
 			},
 			{
-				"command": "reactNativeCss.ReactNativeCssExternalUpdate",
+				"command": "inlineCssChanger.inlineCssChangerExternalUpdate",
 				"title": "CssExternal-React Native"
 			}
 		]

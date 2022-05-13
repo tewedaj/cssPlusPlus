@@ -10,15 +10,15 @@ const ReactNative = require('./languages/ReactNative/changeInline.js');
  */
 function activate(context) {
 
-console.log('Congratulations, your extension "reactNativeCss" is now active!');
+console.log('Congratulations, your extension "inlineCssChanger" is now active!');
 
-let disposable = vscode.commands.registerCommand('reactNativeCss.helloWorld', function () {
+let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', function () {
 		vscode.window.showInformationMessage('Hello World from react-native-css!');
 	});
 
 
 //Update  React Native inline CSS with Name
-	let updateCss = vscode.commands.registerCommand('reactNativeCss.CssUpdate',function(){
+	let updateCss = vscode.commands.registerCommand('inlineCssChanger.CssUpdate',function(){
 		var pageContent = vscode.window.activeTextEditor.document.getText();
 
 	var reacNativeCss = ReactNative.changeInline(pageContent);
@@ -31,7 +31,7 @@ let disposable = vscode.commands.registerCommand('reactNativeCss.helloWorld', fu
 
 
 //Update  React Native inline CSS with out Name
-let ReactNativeNoName = vscode.commands.registerCommand('reactNativeCss.ReactNativeCssUpdateNoName',function(){
+let ReactNativeNoName = vscode.commands.registerCommand('inlineCssChanger.inlineCssChangerUpdateNoName',function(){
 	var pageContent = vscode.window.activeTextEditor.document.getText();
 
 var reacNativeCss = ReactNative.changeInlineRandom(pageContent);
@@ -44,7 +44,7 @@ var reacNativeCss = ReactNative.changeInlineRandom(pageContent);
 
 
 //Update  React Native External Css
-let externalCssReactNative = vscode.commands.registerCommand('reactNativeCss.ReactNativeCssExternalUpdate',function(){
+let externalCssReactNative = vscode.commands.registerCommand('inlineCssChanger.inlineCssChangerExternalUpdate',function(){
 	var pageContent = vscode.window.activeTextEditor.document.getText();
 
 var reacNativeCss = ReactNative.updateExternalCss(pageContent);

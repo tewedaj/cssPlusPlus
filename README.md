@@ -1,4 +1,4 @@
-# reactNativeCss README
+# inlineCssChanger README
 
 Don't worry about your CSS any more, write it inline and i will change it to the way it should be
 
