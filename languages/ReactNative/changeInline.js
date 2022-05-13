@@ -9,14 +9,23 @@ updateExternalCss = (pageContent) =>{
     var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
     var cssContentNotClean = pageContent.split("style={");
     var pageLine = pageContent.split("\n").length;
-    if(isExternalCss(cssContentNotClean[1])){
+    console.log("ok ok am not ok: y] ", cssContentNotClean);
+
+    for(var x = 1; x < cssContentNotClean.length;x++){
+        if(isExternalCss(cssContentNotClean[x])){
+            console.log("ok ok am not ok: ");
         
-      var name =  getExternalCssName(cssContentNotClean[1]);
-      var parameters = getParameters(cssContentNotClean[1]);
-      var editedPageContenet = addCssToExternalCss(pageContent,styleSheetExternalContent[1],name,parameters);
+            var name =  getExternalCssName(cssContentNotClean[x]);
+            console.log("ok ok am not ok: ", name);
+
+            var parameters = getParameters(cssContentNotClean[x]);
+             editedPageContenet = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
+      
+          }
 
     }
-console.log(editedPageContenet);
+    console.log(editedPageContenet);
+
     return {
         pageLine: pageLine,
          pageContent: editedPageContenet
@@ -26,17 +35,22 @@ console.log(editedPageContenet);
 
 
 addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
-    if(externalCss.includes(name)){
+    if(externalCss.includes(name) && parameters != '' && parameters != null){
         externalCss =externalCss.split(name)[1];
         externalCss =externalCss.split("}")[0];
-      return  pageContent.replace(externalCss,externalCss+", \n "+parameters.split(",").join(", \n") +"}");
+      return  pageContent.replace(externalCss,externalCss+", \n "+parameters.split(",").join(", \n"));
     }
-    return "";
+    return pageContent;
 }
 
 isExternalCss = (cssContent) => {
     var css = cssContent.split("}")[0];
-   return !css.includes("{");
+    var df=""
+  
+
+        return !css.includes("{");
+    
+    
 
 }
 
