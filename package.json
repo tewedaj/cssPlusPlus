@@ -1,6 +1,6 @@
 {
 	"name": "inlineCssChanger",
-	"displayName": "react-native-css",
+	"displayName": "inlineCssChanger",
 	"description": "Make writing React Native css a better experiance",
 	"version": "0.0.1",
 	"engines": {
@@ -9,6 +9,7 @@
 	"categories": [
 		"Other"
 	],
+	"publisher": "Tewedajgetahun",
 	"activationEvents": [
 		"onCommand:inlineCssChanger.helloWorld",
 		"onCommand:inlineCssChanger.CssUpdate",
@@ -42,7 +43,7 @@
 		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.67.0",
+		"@types/vscode": "^1.64.2",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "14.x",
