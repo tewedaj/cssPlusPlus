@@ -42,6 +42,22 @@ Fixed issue #.
 
 Added features X, Y, and Z.
 
+There are 3 commands for now:
+CssInline-react Native[R]
+This command will change all your inline css to a 
+Variable named styles and it will link them using a random
+Name..
+CssInline-react native[N]
+This command will change all your inline css to a variable
+Named style but you will have to add "cn: name ]" right before
+The style tag you can comment it and when you run the command
+It will take your given name instead of generating a random name
+CssExternal-React Native
+This command will add to analready external css. External meaning
+A css that is inside the stylesheet with in the same file
+But you will have to add "INParam: styles ]" next to the style tag that is linked
+
+
 -----------------------------------------------------------------------------------------------------------
 
 ## Working with Markdown
