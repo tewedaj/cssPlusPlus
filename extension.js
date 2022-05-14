@@ -25,8 +25,10 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reacNativeCss.pageLine,0),reacNativeCss.pageContent);
 		});
-	
+		 
+
 		vscode.window.showInformationMessage("It's done :)");
+	
 	})
 
 

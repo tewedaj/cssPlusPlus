@@ -45,8 +45,6 @@ addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
 
 isExternalCss = (cssContent) => {
     var css = cssContent.split("}")[0];
-    var df=""
-  
 
         return !css.includes("{");
     
@@ -81,15 +79,16 @@ getExternalCssName = (cssContent) => {
 
     var pageLine = pageContent.split("\n").length;
     var inlineCss = pageContent.split("style={{");
+    var names = [];
 
     for(var x = 1; x < inlineCss.length;x++){
-        var name = getName(inlineCss[x-1]);
-
+        var name = getName(inlineCss[x-1],names);
+            names.push(name);
          cssContent = cssContent+ name.split(".")[1] +":{ \n "+
          getCssContent(inlineCss[x]) 
          +"}, \n";
        
-         editedPageContenet =  removeInlineCss(editedPageContenet,inlineCss[x],"styles."+name);   
+         editedPageContenet =  removeInlineCss(editedPageContenet,inlineCss[x],name);   
 
     }
 
@@ -160,10 +159,15 @@ var changeInlineRandom = (pageContent) =>{
 
 }
 
-var getName = (inlineCss) => {
+var getName = (inlineCss,names) => {
     var name = inlineCss.split("cn:")[inlineCss.split("cn:").length-1].split("]")[0];
+    if(inlineCss.split("cn:").length > 1){
 
-    return "styles."+name.trim();
+        return "styles."+name.trim();
+    }else{
+        return "styles."+generateRandomFourlatterWord(names)
+
+    }
 }
 
 var getCssContent = (inlineCss) => {
