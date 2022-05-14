@@ -1,6 +1,6 @@
 {
 	"name": "inlineCssChanger",
-	"displayName": "Inline-Css-Changer",
+	"displayName": "CSS++",
 	"description": "Make writing React Native css a better experiance",
 	"version": "0.1.2",
 	"icon": "nmnm.png",
