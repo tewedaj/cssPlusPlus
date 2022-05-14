@@ -2,7 +2,7 @@
 	"name": "inlineCssChanger",
 	"displayName": "CSS++",
 	"description": "Make writing React Native css a better experiance",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"icon": "nmnm.png",
 	"engines": {
 		"vscode": "^1.64.2"
