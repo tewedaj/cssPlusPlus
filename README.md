@@ -3,11 +3,9 @@
 Don't worry about your CSS any more, write it inline and i will change it to the way it should be
 
 ## Features
-<p>
-  <img src="https://tiinstitution.com/howto.gif" width=200 height=200 />
-  </p>
 
-![alt text](https://tiinstitution.com/howto.gif)
+Using the Random name Command:
+https://tiinstitution.com/howto.gif
 
 
 Automaticly Change inline CSS to external Css , with name or with random name for the style name
