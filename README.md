@@ -7,6 +7,9 @@ Don't worry about your CSS any more, write it inline and i will change it to the
 Using the Random name Command:
 https://tiinstitution.com/howto.gif
 
+Using the [N] command: 
+https://tiinstitution.com/howTo2.gif
+
 
 Automaticly Change inline CSS to external Css , with name or with random name for the style name
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
