@@ -91,7 +91,6 @@ getExternalCssName = (cssContent) => {
    
     var editedPageContenet = pageContent;
     var cssContent = "";
-    var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
 
     var pageLine = pageContent.split("\n").length;
     var inlineCss = pageContent.split("style={{");
@@ -108,16 +107,7 @@ getExternalCssName = (cssContent) => {
 
     }
 
-    if(styleSheetExists(pageContent)){
-        console.log("AKAKAKAKA");
-        editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
-            var pageContentDone = editedPageContenet;
-    }else{
-
     var pageContentDone = editedPageContenet + "\n \n \n  const styles = StyleSheet.create({ \n "+ cssContent.split(",").join(", \n")  + "}) "
-}
-
-  
 
    return {
        pageLine: pageLine,

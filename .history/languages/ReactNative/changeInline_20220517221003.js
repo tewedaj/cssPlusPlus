@@ -91,7 +91,6 @@ getExternalCssName = (cssContent) => {
    
     var editedPageContenet = pageContent;
     var cssContent = "";
-    var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
 
     var pageLine = pageContent.split("\n").length;
     var inlineCss = pageContent.split("style={{");
