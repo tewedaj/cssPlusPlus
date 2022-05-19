@@ -16,7 +16,7 @@
 		"onCommand:inlineCssChanger.CssUpdate",
 		"onCommand:inlineCssChanger.inlineCssChangerUpdateNoName",
 		"onCommand:inlineCssChanger.inlineCssChangerExternalUpdate",
-		"onCommand:inlineCssChanger.reactJsNoNameChanger"
+		"onCommand:inlineCssChanger.reactJsNoNameChanger",
 	],
 	"main": "./extension.js",
 	"contributes": {

@@ -15,8 +15,7 @@
 		"onCommand:inlineCssChanger.helloWorld",
 		"onCommand:inlineCssChanger.CssUpdate",
 		"onCommand:inlineCssChanger.inlineCssChangerUpdateNoName",
-		"onCommand:inlineCssChanger.inlineCssChangerExternalUpdate",
-		"onCommand:inlineCssChanger.reactJsNoNameChanger"
+		"onCommand:inlineCssChanger.inlineCssChangerExternalUpdate"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -36,10 +35,6 @@
 			{
 				"command": "inlineCssChanger.inlineCssChangerExternalUpdate",
 				"title": "CssExternal-React Native"
-			},
-			{
-				"command": "inlineCssChanger.reactJsNoNameChanger",
-				"title": "Css: react Js [Random]"
 			}
 		]
 	},
