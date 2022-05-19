@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
+
 const vscode = require('vscode');
-const { posix } = require('path');
 const ReactNative = require('./languages/ReactNative/changeInline.js');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -30,22 +30,6 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 		vscode.window.showInformationMessage("It's done :)");
 	
-	})
-
-
-	let ReactJsNoName = vscode.commands.registerCommand('inlineCssChanger.reactJsNoNameChanger',async function(){
-	//code to use latter
-		// var someWord = 'asdklfjsdklfjsdkljflk jskldjf yooo';
-		// var writeWord = Buffer.from(someWord,'utf8');
-	
-		// var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		// var fileLocation = folderUri.with({path: posix.join(folderUri.path, 'styles.css') });
-	
-		// await vscode.workspace.fs.writeFile(fileLocation,writeWord);
-		
-		
-
-
 	})
 
 
