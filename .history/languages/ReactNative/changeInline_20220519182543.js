@@ -203,7 +203,7 @@ var getName = (inlineCss,names) => {
 }
 
 var styleSheetExists = (pageContent) =>{
-    if(pageContent.split("StyleSheet.create({").length > 1){
+    if(pageContent.split("StyleSheet.create({").length > 0){
         console.log("true: ",pageContent.split("StyleSheet.create({").length.toString() );
         return true;
     }else{
