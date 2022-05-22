@@ -1,4 +1,4 @@
-const {kebabCase} =require("./camilCase.js");
+const {kebabCase} = "./camilCase.js";
 
 
 
@@ -156,7 +156,7 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}"
+        cssContent: kebabCase(cssContent.split(",").join(", \n"))
    }
 
 

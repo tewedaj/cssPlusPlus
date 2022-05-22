@@ -1,4 +1,4 @@
-const {kebabCase} =require("./camilCase.js");
+
 
 
 
@@ -85,30 +85,22 @@ getExternalCssName = (cssContent) => {
     return cssName.split(".")[1];
 }
 
-// changeCamleCase = (cssContent) => {
-//     var changedCssContent = cssContent;
-//     console.log("THE LENGTH: " ,cssContent.length );
-//     for(var x = 0; x < cssContent.length; x++){
-//         // console.log("okok: ", cssContent[x])
-//         if(isChar(cssContent[x])){
-//             if(isUpperCase(cssContent[x])){
-//                 console.log("not ok");
-//                 changedCssContent = changedCssContent.replace(changedCssContent[x],"-"+changedCssContent[x]);
-//                 // changedCssContent[x] = "-"+changedCssContent[x];
-//                 console.log(changedCssContent);
-                
-//             }
-//         }
-      
-//     }
-// console.log("THIS IS CSSCONTENT: ", cssContent)
-//     return changedCssContent;
-// }
+changeCamleCase = (cssContent) => {
+    var changedCssContent = cssContent;
+    console.log("THE LENGTH: " ,cssContent.trim().length );
+    for(var x = 0; x < cssContent.trim().length; x++){
+        // console.log("okok: ", cssContent[x])
+        if(isUpperCase){
+            // console.log("not ok");
+            changedCssContent = changedCssContent.replace(changedCssContent[x],"-"+changedCssContent[x]);
+        }
+    }
+console.log("THIS IS CSSCONTENT: ", cssContent)
+    return changedCssContent;
+}
 
-var isUpperCase = (character) => { 
-    if(character.toUpperCase() === character){
-    console.log(character);
-
+isUpperCase = (character) => { 
+    if(character.toUpperCase() == character){
         //upercase
         return true;
     }else{
@@ -156,21 +148,12 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}"
+        cssContent: changeCamleCase(cssContent.split(",").join(", \n"))
    }
 
 
 }
 
-
-var isChar = (char) => {
-    var albhabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-if(albhabet.indexOf(char.toLowerCase()) >= 0){
-    return true;
-}else{
-    return false;
-}
-}
 
 
 

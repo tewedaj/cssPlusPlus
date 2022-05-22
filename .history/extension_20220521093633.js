@@ -34,30 +34,46 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 	})
 
 
-	
+	changeCamleCase = (cssContent) => {
+		var changedCssContent = "";
+		for(var x = 0; x < cssContent.length; x++){
+			if(isUpperCase){
+				cssContent = cssContent.replace(cssContent[x],"-"+cssContent[x]);
+			}
+		}
+
+		return cssContent;
+	}
+
+	isUpperCase = (character) => { 
+		if(character.toUpperCase() == character){
+			//upercase
+			return true;
+		}else{
+			//lowercase
+			return false;
+		}
+
+	}
 
 
 	let ReactJsNoName = vscode.commands.registerCommand('inlineCssChanger.reactJsNoNameChanger',async function(){
 	//code to use latter
-		
 
 		var pageContent = vscode.window.activeTextEditor.document.getText();
-		var folderUri = vscode.workspace.workspaceFolders[0].uri;
 		
 		var reactJs = ReactJs.changeInline(pageContent);
 
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from ./styles/styles.js; \n" +reactJs.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),reactJs.pageContent);
 		});
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 	
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(folderUri.path+"/styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(folderUri.path, 'styles.css') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
-		vscode.window.showInformationMessage("It's done :)");
-
 
 	})
 
@@ -92,7 +108,6 @@ var reacNativeCss = ReactNative.updateExternalCss(pageContent);
 	context.subscriptions.push(updateCss);;
 	context.subscriptions.push(ReactNativeNoName);
 	context.subscriptions.push(externalCssReactNative);
-	context.subscriptions.push(ReactJsNoName);
 }
 
 

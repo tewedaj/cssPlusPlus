@@ -42,12 +42,11 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		
 
 		var pageContent = vscode.window.activeTextEditor.document.getText();
-		var folderUri = vscode.workspace.workspaceFolders[0].uri;
 		
 		var reactJs = ReactJs.changeInline(pageContent);
 
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from ./styles/styles.js; \n" +reactJs.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),reactJs.pageContent);
 		});
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');

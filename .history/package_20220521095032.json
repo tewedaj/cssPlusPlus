@@ -1,0 +1,62 @@
+{
+	"name": "inlineCssChanger",
+	"displayName": "CSS++",
+	"description": "Make writing React Native css a better experiance",
+	"version": "0.1.8",
+	"icon": "nmnm.png",
+	"engines": {
+		"vscode": "^1.64.2"
+	},
+	"categories": [
+		"Other"
+	],
+	"publisher": "Tewedajgetahun",
+	"activationEvents": [
+		"onCommand:inlineCssChanger.helloWorld",
+		"onCommand:inlineCssChanger.CssUpdate",
+		"onCommand:inlineCssChanger.inlineCssChangerUpdateNoName",
+		"onCommand:inlineCssChanger.inlineCssChangerExternalUpdate",
+		"onCommand:inlineCssChanger.reactJsNoNameChanger"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "inlineCssChanger.helloWorld",
+				"title": "Hello World"
+			},
+			{
+				"command": "inlineCssChanger.CssUpdate",
+				"title": "CssInline-React Native[N]"
+			},
+			{
+				"command": "inlineCssChanger.inlineCssChangerUpdateNoName",
+				"title": "CssInline-React Native[R]"
+			},
+			{
+				"command": "inlineCssChanger.inlineCssChangerExternalUpdate",
+				"title": "CssExternal-React Native"
+			},
+			{
+				"command": "inlineCssChanger.reactJsNoNameChanger",
+				"title": "Css: react Js [Random]"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.64.2",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "14.x",
+		"eslint": "^8.14.0",
+		"glob": "^8.0.1",
+		"mocha": "^9.2.2",
+		"typescript": "^4.6.4",
+		"@vscode/test-electron": "^2.1.3"
+	}
+}

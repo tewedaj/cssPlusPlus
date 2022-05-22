@@ -47,7 +47,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var reactJs = ReactJs.changeInline(pageContent);
 
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from ./styles/styles.js; \n" +reactJs.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from ./"+folderUri.path.split("/")[folderUri.path.split("/").length-2]+"/"+folderUri.path.split("/")[folderUri.path.split("/").length-1]+ +"/styles/styles.js; \n" +reactJs.pageContent);
 		});
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
