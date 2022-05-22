@@ -41,22 +41,19 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		//code to use latter
 		
 		
+		var styleUri = activeEditorUri + "/styles/";
 		var pageContent = vscode.window.activeTextEditor.document.getText();
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
-			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
-			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
-			var styleUri = activeEditorUri + "/styles/";
-
+		var activeEditorUri = vscode.window.activeEditorUri;
 		var reactJs = ReactJs.changeInline(pageContent);
 
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from './styles/styles.js'; \n" +reactJs.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from '"+styleUri+"styles.js'; \n" +reactJs.pageContent);
 		});
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(folderUri.path+"/styles/", 'styles.js') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
