@@ -43,10 +43,8 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		
 		var pageContent = vscode.window.activeTextEditor.document.getText();
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
-			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
-			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
-			var styleUri = activeEditorUri + "/styles/";
+		var activeEditorUri = vscode.window.activeTextEditor.document.uri;
+		var styleUri = activeEditorUri + "/styles/";
 
 		var reactJs = ReactJs.changeInline(pageContent);
 
@@ -56,7 +54,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(folderUri.path+"/styles/", 'styles.js') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");

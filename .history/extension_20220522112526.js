@@ -45,8 +45,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
 		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
-			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
-			var styleUri = activeEditorUri + "/styles/";
+		var styleUri = activeEditorUri + "/styles/";
 
 		var reactJs = ReactJs.changeInline(pageContent);
 
