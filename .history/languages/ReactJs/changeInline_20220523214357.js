@@ -44,17 +44,13 @@ addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
 }
 
 addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
-//   externalCss = externalCss.split("})")[0];
-    externalCss = externalCss.split("},").length;
-    if(externalCss > 1){
-        console.log("KKKKK: " , externalCss);
-        var commaExists = lastCharIsComma(externalCss);
-      //   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
-        console.log("abbbbb: ", commaExists);
-        console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
-        return pageContent.replace("},", commaExists? externalCss + bigCss : externalCss+ ","+bigCss);
-      
-    }
+  externalCss = externalCss.split("})")[0];
+  console.log("KKKKK: " , externalCss);
+  var commaExists = lastCharIsComma(externalCss);
+//   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
+  console.log("abbbbb: ", commaExists);
+  console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
+  return pageContent.replace(externalCss, commaExists? externalCss + bigCss : externalCss+ ","+bigCss);
 }
 
 lastCharIsComma = (content) => {
@@ -148,6 +144,7 @@ var isUpperCase = (character) => {
 
     if(styleSheetExists(pageContent)){
         console.log("AKAKAKAKA");
+        cssContent = "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}";
         editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent,cssContent);
             var pageContentDone = editedPageContenet;
     }else{

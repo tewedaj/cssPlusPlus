@@ -1,4 +1,4 @@
-const {kebabCase} =require("./camilCase.js");
+
 
 
 
@@ -43,21 +43,20 @@ addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     return pageContent;
 }
 
-addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
-//   externalCss = externalCss.split("})")[0];
-    externalCss = externalCss.split("},").length;
-    if(externalCss > 1){
-        console.log("KKKKK: " , externalCss);
-        var commaExists = lastCharIsComma(externalCss);
-      //   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
-        console.log("abbbbb: ", commaExists);
-        console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
-        return pageContent.replace("},", commaExists? externalCss + bigCss : externalCss+ ","+bigCss);
-      
-    }
+const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
+  console.log("KKAAAAAAAAAAAAAAAAAaKKK: " , externalCss);
+
+  externalCss = externalCss.split("})")[0];
+  console.log("KKvbvbvbKKK: " , externalCss);
+  var commaExists = lastCharIsComma(externalCss.toString());
+//   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
+  console.log("abbbbb: ", commaExists);
+  console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
+  return pageContent.replace(externalCss, commaExists? externalCss + bigCss.split(",").join(", \n") : externalCss+ ","+bigCss.split(",").join(", \n"));
 }
 
 lastCharIsComma = (content) => {
+    console.log(content);
   var commaExists = content.trim().charAt(content.trim().length-1) == ","?  true : false;
 return commaExists;
 }
@@ -89,47 +88,13 @@ getExternalCssName = (cssContent) => {
     return cssName.split(".")[1];
 }
 
-// changeCamleCase = (cssContent) => {
-//     var changedCssContent = cssContent;
-//     console.log("THE LENGTH: " ,cssContent.length );
-//     for(var x = 0; x < cssContent.length; x++){
-//         // console.log("okok: ", cssContent[x])
-//         if(isChar(cssContent[x])){
-//             if(isUpperCase(cssContent[x])){
-//                 console.log("not ok");
-//                 changedCssContent = changedCssContent.replace(changedCssContent[x],"-"+changedCssContent[x]);
-//                 // changedCssContent[x] = "-"+changedCssContent[x];
-//                 console.log(changedCssContent);
-                
-//             }
-//         }
-      
-//     }
-// console.log("THIS IS CSSCONTENT: ", cssContent)
-//     return changedCssContent;
-// }
-
-var isUpperCase = (character) => { 
-    if(character.toUpperCase() === character){
-    console.log(character);
-
-        //upercase
-        return true;
-    }else{
-        //lowercase
-        return false;
-    }
-
-}
-
-
- var changeInline = (pageContent,cssUnedited) =>{
+ var changeInline = (pageContent) =>{
     // React Native has a function
     // styleSheet where all of the CSS for the page is added
    
     var editedPageContenet = pageContent;
     var cssContent = "";
-    var styleSheetExternalContent = cssUnedited;
+    var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
 
     var pageLine = pageContent.split("\n").length;
     var inlineCss = pageContent.split("style={{");
@@ -148,34 +113,24 @@ var isUpperCase = (character) => {
 
     if(styleSheetExists(pageContent)){
         console.log("AKAKAKAKA");
-        editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent,cssContent);
+        console.log(styleSheetExternalContent[1]);
+        editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
             var pageContentDone = editedPageContenet;
     }else{
-    cssContent = "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}";
-    var pageContentDone = editedPageContenet;
+
+    var pageContentDone = editedPageContenet + "\n \n \n  const styles = StyleSheet.create({ \n "+ cssContent.split(",").join(", \n")  + "}) "
 }
 
-
-
+  
 
    return {
        pageLine: pageLine,
-        pageContent: pageContentDone,
-        cssContent: "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}"
+        pageContent: pageContentDone
    }
 
 
 }
 
-
-var isChar = (char) => {
-    var albhabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-if(albhabet.indexOf(char.toLowerCase()) >= 0){
-    return true;
-}else{
-    return false;
-}
-}
 
 
 
@@ -225,6 +180,7 @@ var changeInlineRandom = (pageContent) =>{
         
         if(styleSheetExists(pageContent)){
             console.log("AKAKAKAKA");
+            console.log(styleSheetExternalContent[1]);
             editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
                 var pageContentDone = editedPageContenet;
         }else{

@@ -4,6 +4,7 @@ const vscode = require('vscode');
 const { posix } = require('path');
 const ReactNative = require('./languages/ReactNative/changeInline.js');
 const ReactJs = require('./languages/ReactJs/changeInline.js');
+const { ReadableByteStreamController } = require('stream/web');
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 

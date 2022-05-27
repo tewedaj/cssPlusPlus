@@ -148,6 +148,7 @@ var isUpperCase = (character) => {
 
     if(styleSheetExists(pageContent)){
         console.log("AKAKAKAKA");
+        cssContent = "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}";
         editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent,cssContent);
             var pageContentDone = editedPageContenet;
     }else{
