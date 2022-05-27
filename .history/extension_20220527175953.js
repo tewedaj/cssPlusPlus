@@ -50,10 +50,8 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
-		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.js') });
-
-		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
+		var extenralCss = activeEditorUri+"styles/styles.js";
+		var cssContentOld = await vscode.workspace.fs.readFile(extenralCss);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
 		var reactJs = ReactJs.changeInline(pageContent,cssContentString);
@@ -74,33 +72,28 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 	let ReactJsWithName = vscode.commands.registerCommand('inlineCssChanger.reactJsWithName', async function(){
 
+	
 		var pageContent = vscode.window.activeTextEditor.document.getText();
-		var cssValue = vscode.window.activeTextEditor.document.uri._fsPath.toString();
-			cssValue = cssValue.replace(cssValue.split("/")[cssValue.split("/").length-1],"");
-			cssValue = cssValue.replace(cssValue.split("/")[0],"");
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.js') });
+
+		var cssContentExists = await vscode.workspace.fs.readDirectory(fileLocation);
+		
 		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
-		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.js') });
 
-		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
-		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
-		var reactJs = ReactJs.changeInline(pageContent,cssContentString);
+		var reactJs = ReactJs.changeInline(pageContent,cssContentExists);
+
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from './styles/styles.js'; \n" +reactJs.pageContent);
 		});
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
-		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.js') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
-
 
 	})
 
@@ -136,7 +129,6 @@ var reacNativeCss = ReactNative.updateExternalCss(pageContent);
 	context.subscriptions.push(ReactNativeNoName);
 	context.subscriptions.push(externalCssReactNative);
 	context.subscriptions.push(ReactJsNoName);
-	context.subscriptions.push(ReactJsWithName);
 }
 
 

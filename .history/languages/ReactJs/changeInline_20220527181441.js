@@ -150,15 +150,13 @@ var isUpperCase = (character) => {
 
     }
 
-    if(styleSheetExternalContent.length > 0){
+    if(styleSheetExists(pageContent)){
         console.log("AKAKAKAKA");
         editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent,cssContent);
-            var pageContentDone = editedPageContenet.pageContent;
-            cssContent = editedPageContenet.cssContent;
+            var pageContentDone = editedPageContenet;
     }else{
     cssContent = "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}";
     var pageContentDone = editedPageContenet;
-    
 }
 
 
@@ -167,7 +165,7 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: cssContent
+        cssContent: "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}"
    }
 
 

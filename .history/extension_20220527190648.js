@@ -136,7 +136,6 @@ var reacNativeCss = ReactNative.updateExternalCss(pageContent);
 	context.subscriptions.push(ReactNativeNoName);
 	context.subscriptions.push(externalCssReactNative);
 	context.subscriptions.push(ReactJsNoName);
-	context.subscriptions.push(ReactJsWithName);
 }
 
 

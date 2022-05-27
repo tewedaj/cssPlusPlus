@@ -34,7 +34,7 @@ updateExternalCss = (pageContent) =>{
 }
 
 
-const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
+addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     if(externalCss.includes(name) && parameters != '' && parameters != null){
         externalCss =externalCss.split(name)[1];
         externalCss =externalCss.split("}")[0];
@@ -43,7 +43,7 @@ const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     return pageContent;
 }
 
-const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
+addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
 //   externalCss = externalCss.split("})")[0];
    
     if(externalCss.length > 1){
@@ -52,11 +52,7 @@ const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
       //   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
         console.log("abbbbb: ", commaExists);
         console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
-        return{
-            pageContent: pageContent,
-            cssContent: externalCss.replace(/}/, commaExists? externalCss + bigCss : externalCss+ ","+bigCss),
-            
-        } 
+        return pageContent.replace(/}/, commaExists? externalCss + bigCss : externalCss+ ","+bigCss);
       
     }
 }
@@ -150,15 +146,13 @@ var isUpperCase = (character) => {
 
     }
 
-    if(styleSheetExternalContent.length > 0){
+    if(styleSheetExists(pageContent)){
         console.log("AKAKAKAKA");
         editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent,cssContent);
-            var pageContentDone = editedPageContenet.pageContent;
-            cssContent = editedPageContenet.cssContent;
+            var pageContentDone = editedPageContenet;
     }else{
     cssContent = "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}";
     var pageContentDone = editedPageContenet;
-    
 }
 
 
@@ -167,7 +161,7 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: cssContent
+        cssContent: "export const styles = { \n "+ cssContent.split(",").join(", \n") +" \n}"
    }
 
 

@@ -41,10 +41,6 @@
 			{
 				"command": "inlineCssChanger.reactJsNoNameChanger",
 				"title": "CssPlus: React-JS[Random]"
-			},
-			{
-				"command": "inlineCssChanger.reactJsWithName",
-				"title": "CssPlus: React-JS[Name]"
 			}
 		]
 	},
