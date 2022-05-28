@@ -2,13 +2,12 @@ const {kebabCase} =require("./camilCase.js");
 
 
 
-updateExternalCss = (pageContent,cssContentS) =>{
+updateExternalCss = (pageContent,cssContent) =>{
     
     var editedPageContenet = pageContent;
-    var cssContentd = "";
-    var styleSheetExternalContent = cssContentS;
+    var cssContent = "";
+    var styleSheetExternalContent = cssContent;
     var cssContentNotClean = pageContent.split("style={");
-    
     // var cssContentNotClean = cssContent;
     var pageLine = pageContent.split("\n").length;
     console.log("ok ok am not ok: y] ", cssContentNotClean);
@@ -16,12 +15,12 @@ updateExternalCss = (pageContent,cssContentS) =>{
     for(var x = 1; x < cssContentNotClean.length;x++){
         if(isExternalCss(cssContentNotClean[x])){
             console.log("ok ok am not ok: ");
-            editedPageContenet = removeParameters(editedPageContenet,cssContentNotClean[x]);
+        
             var name =  getExternalCssName(cssContentNotClean[x]);
             console.log("ok ok am not ok: ", name);
 
             var parameters = getParameters(cssContentNotClean[x]);
-            cssContentd = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
+             editedPageContenet = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
       
           }
 
@@ -31,7 +30,7 @@ updateExternalCss = (pageContent,cssContentS) =>{
     return {
         pageLine: pageLine,
          pageContent: editedPageContenet,
-         cssContent: cssContentd
+         cssContent: 
     }
 
 }
@@ -280,20 +279,6 @@ var getCssContent = (inlineCss) => {
 var removeInlineCss = (pageContent,inlineCss,name) =>{
     var pageContentEdited  =pageContent.replace("{"+inlineCss.split("}}")[0]+"}",name);    
 return pageContentEdited;
-}
-
-var removeParameters = (pageContent,paramStyles) =>{
-    var pageContentEdited = "";
-    var parameters = paramStyles.split("cnd:")[1];
-    if(parameters){
-    var parameters = paramStyles.split("]").length;
-    if(parameters.length > 0){
-
-        pageContentEdited = pageContent.replace("cnd:"+paramStyles.split("]"),"");
-    }
-}
-
-    return pageContentEdited;
 }
 
 module.exports = {

@@ -284,7 +284,7 @@ return pageContentEdited;
 
 var removeParameters = (pageContent,paramStyles) =>{
     var pageContentEdited = "";
-    var parameters = paramStyles.split("cnd:")[1];
+    var parameters = cssContent.split("cnd:")[1];
     if(parameters){
     var parameters = paramStyles.split("]").length;
     if(parameters.length > 0){

@@ -2,26 +2,24 @@ const {kebabCase} =require("./camilCase.js");
 
 
 
-updateExternalCss = (pageContent,cssContentS) =>{
+updateExternalCss = (pageContent) =>{
     
     var editedPageContenet = pageContent;
-    var cssContentd = "";
-    var styleSheetExternalContent = cssContentS;
+    var cssContent = "";
+    var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
     var cssContentNotClean = pageContent.split("style={");
-    
-    // var cssContentNotClean = cssContent;
     var pageLine = pageContent.split("\n").length;
     console.log("ok ok am not ok: y] ", cssContentNotClean);
 
     for(var x = 1; x < cssContentNotClean.length;x++){
         if(isExternalCss(cssContentNotClean[x])){
             console.log("ok ok am not ok: ");
-            editedPageContenet = removeParameters(editedPageContenet,cssContentNotClean[x]);
+        
             var name =  getExternalCssName(cssContentNotClean[x]);
             console.log("ok ok am not ok: ", name);
 
             var parameters = getParameters(cssContentNotClean[x]);
-            cssContentd = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
+             editedPageContenet = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
       
           }
 
@@ -30,8 +28,7 @@ updateExternalCss = (pageContent,cssContentS) =>{
 
     return {
         pageLine: pageLine,
-         pageContent: editedPageContenet,
-         cssContent: cssContentd
+         pageContent: editedPageContenet
     }
 
 }
@@ -41,9 +38,9 @@ const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     if(externalCss.includes(name) && parameters != '' && parameters != null){
         externalCss =externalCss.split(name)[1];
         externalCss =externalCss.split("}")[0];
-      return  externalCss.replace(externalCss,externalCss+", \n "+parameters.split(",").join(", \n"));
+      return  pageContent.replace(externalCss,externalCss+", \n "+parameters.split(",").join(", \n"));
     }
-    return externalCss;
+    return pageContent;
 }
 
 const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
@@ -64,12 +61,12 @@ const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
     }
 }
 
-const lastCharIsComma = (content) => {
+lastCharIsComma = (content) => {
   var commaExists = content.trim().charAt(content.trim().length-1) == ","?  true : false;
 return commaExists;
 }
 
-const isExternalCss = (cssContent) => {
+isExternalCss = (cssContent) => {
     var css = cssContent.split("}")[0];
 
         return !css.includes("{");
@@ -78,7 +75,7 @@ const isExternalCss = (cssContent) => {
 
 }
 
-const getParameters = (cssContent) => {
+getParameters = (cssContent) => {
     var params = cssContent.split("cnd:")[1];
     if(!params){
         //some error meseage
@@ -90,7 +87,7 @@ const getParameters = (cssContent) => {
     return "";
 }
 
-const getExternalCssName = (cssContent) => {
+getExternalCssName = (cssContent) => {
     var cssName = cssContent.split("}")[0];
     
     return cssName.split(".")[1];
@@ -280,20 +277,6 @@ var getCssContent = (inlineCss) => {
 var removeInlineCss = (pageContent,inlineCss,name) =>{
     var pageContentEdited  =pageContent.replace("{"+inlineCss.split("}}")[0]+"}",name);    
 return pageContentEdited;
-}
-
-var removeParameters = (pageContent,paramStyles) =>{
-    var pageContentEdited = "";
-    var parameters = paramStyles.split("cnd:")[1];
-    if(parameters){
-    var parameters = paramStyles.split("]").length;
-    if(parameters.length > 0){
-
-        pageContentEdited = pageContent.replace("cnd:"+paramStyles.split("]"),"");
-    }
-}
-
-    return pageContentEdited;
 }
 
 module.exports = {

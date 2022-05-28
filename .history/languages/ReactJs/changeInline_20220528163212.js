@@ -2,11 +2,11 @@ const {kebabCase} =require("./camilCase.js");
 
 
 
-updateExternalCss = (pageContent,cssContentS) =>{
+updateExternalCss = (pageContent,cssContent) =>{
     
     var editedPageContenet = pageContent;
-    var cssContentd = "";
-    var styleSheetExternalContent = cssContentS;
+    var cssContent = "";
+    var styleSheetExternalContent = cssContent;
     var cssContentNotClean = pageContent.split("style={");
     
     // var cssContentNotClean = cssContent;
@@ -21,7 +21,7 @@ updateExternalCss = (pageContent,cssContentS) =>{
             console.log("ok ok am not ok: ", name);
 
             var parameters = getParameters(cssContentNotClean[x]);
-            cssContentd = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
+            cssContent = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
       
           }
 
@@ -31,7 +31,7 @@ updateExternalCss = (pageContent,cssContentS) =>{
     return {
         pageLine: pageLine,
          pageContent: editedPageContenet,
-         cssContent: cssContentd
+         cssContent: cssContent
     }
 
 }
@@ -284,14 +284,11 @@ return pageContentEdited;
 
 var removeParameters = (pageContent,paramStyles) =>{
     var pageContentEdited = "";
-    var parameters = paramStyles.split("cnd:")[1];
-    if(parameters){
     var parameters = paramStyles.split("]").length;
     if(parameters.length > 0){
 
         pageContentEdited = pageContent.replace("cnd:"+paramStyles.split("]"),"");
     }
-}
 
     return pageContentEdited;
 }

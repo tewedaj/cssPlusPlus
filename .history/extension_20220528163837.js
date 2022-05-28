@@ -104,7 +104,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 	})
 
-	let ReactJsUpdateExternal = vscode.commands.registerCommand('inlineCssChanger.reactJsUpdateExternal', async function(){
+	let ReactJsUpdateExternal = vscode.commands.registerCommand('inlineCssChanger.reactJsWithName', async function(){
 
 		var pageContent = vscode.window.activeTextEditor.document.getText();
 		var cssValue = vscode.window.activeTextEditor.document.uri._fsPath.toString();
@@ -121,7 +121,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
-		var reactJs = ReactJs.updateExternalCss(pageContent,cssContentString);
+		var reactJs = ReactJs.changeInline(pageContent,cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from './styles/styles.js'; \n" +reactJs.pageContent);
 		});

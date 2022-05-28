@@ -5,7 +5,7 @@ const {kebabCase} =require("./camilCase.js");
 updateExternalCss = (pageContent,cssContentS) =>{
     
     var editedPageContenet = pageContent;
-    var cssContentd = "";
+    var cssContent = "";
     var styleSheetExternalContent = cssContentS;
     var cssContentNotClean = pageContent.split("style={");
     
@@ -21,7 +21,7 @@ updateExternalCss = (pageContent,cssContentS) =>{
             console.log("ok ok am not ok: ", name);
 
             var parameters = getParameters(cssContentNotClean[x]);
-            cssContentd = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
+            cssContent = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
       
           }
 
@@ -31,7 +31,7 @@ updateExternalCss = (pageContent,cssContentS) =>{
     return {
         pageLine: pageLine,
          pageContent: editedPageContenet,
-         cssContent: cssContentd
+         cssContent: cssContent
     }
 
 }
@@ -284,7 +284,7 @@ return pageContentEdited;
 
 var removeParameters = (pageContent,paramStyles) =>{
     var pageContentEdited = "";
-    var parameters = paramStyles.split("cnd:")[1];
+    var parameters = cssContent.split("cnd:")[1];
     if(parameters){
     var parameters = paramStyles.split("]").length;
     if(parameters.length > 0){
