@@ -43,8 +43,7 @@ const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     if(externalCss.includes(name) && parameters != '' && parameters != null){
     var    externalCssSingle =externalCss.split(name)[1];
     externalCssSingle =externalCssSingle.split("}")[0];
-    var comma = lastCharIsComma(externalCssSingle);
-      return  externalCss.replace(externalCssSingle,comma?externalCssSingle +" \n "+parameters.split(",").join(", \n") : externalCssSingle +", \n "+parameters.split(",").join(", \n"));
+      return  externalCss.replace(externalCssSingle,externalCssSingle+", \n "+parameters.split(",").join(", \n"));
     }else{
         console.log("ERRRR");
     }

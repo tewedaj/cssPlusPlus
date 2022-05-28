@@ -2,10 +2,10 @@ const {kebabCase} =require("./camilCase.js");
 
 
 
-const updateExternalCss = (pageContent,cssContentS) =>{
+updateExternalCss = (pageContent,cssContentS) =>{
     
     var editedPageContenet = pageContent;
-    var cssContentd = cssContentS;
+    var cssContentd = "";
     var styleSheetExternalContent = cssContentS;
     var cssContentNotClean = pageContent.split("style={");
     
@@ -19,21 +19,19 @@ const updateExternalCss = (pageContent,cssContentS) =>{
             editedPageContenet = removeParameters(editedPageContenet,cssContentNotClean[x]);
             var name =  getExternalCssName(cssContentNotClean[x]);
             console.log("ok ok am not ok: ", name);
-            console.log("ok ok am not o1: ", parameters);
-
 
             var parameters = getParameters(cssContentNotClean[x]);
-            cssContentd = addCssToExternalCss(editedPageContenet,cssContentd,name,parameters);
+            cssContentd = addCssToExternalCss(editedPageContenet,styleSheetExternalContent,name,parameters);
       
           }
 
     }
-    
+    console.log(editedPageContenet);
 
     return {
         pageLine: pageLine,
          pageContent: editedPageContenet,
-         cssContent: cssContentd.replace(",,",",")
+         cssContent: cssContentd
     }
 
 }
@@ -41,12 +39,9 @@ const updateExternalCss = (pageContent,cssContentS) =>{
 
 const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     if(externalCss.includes(name) && parameters != '' && parameters != null){
-    var    externalCssSingle =externalCss.split(name)[1];
-    externalCssSingle =externalCssSingle.split("}")[0];
-    var comma = lastCharIsComma(externalCssSingle);
-      return  externalCss.replace(externalCssSingle,comma?externalCssSingle +" \n "+parameters.split(",").join(", \n") : externalCssSingle +", \n "+parameters.split(",").join(", \n"));
-    }else{
-        console.log("ERRRR");
+        externalCss =externalCss.split(name)[1];
+        externalCss =externalCss.split("}")[0];
+      return  externalCss.replace(externalCss,externalCss+", \n "+parameters.split(",").join(", \n"));
     }
     return externalCss;
 }
@@ -291,10 +286,10 @@ var removeParameters = (pageContent,paramStyles) =>{
     var pageContentEdited = pageContent;
     var parameters = paramStyles.split("cnd:")[1];
     if(parameters){
-    var parameters = parameters.split("]");
+    var parameters = paramStyles.split("]").length;
     if(parameters.length > 0){
 
-        pageContentEdited = pageContent.replace(parameters[0],"");
+        pageContentEdited = pageContent.replace("cnd:"+paramStyles.split("]"),"");
     }
 }
 
