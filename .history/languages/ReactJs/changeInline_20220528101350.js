@@ -54,7 +54,7 @@ const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
         console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
         return{
             pageContent: pageContent,
-            cssContent: externalCss.replace(/}/, commaExists? "}," + bigCss : "},"+ ","+bigCss),
+            cssContent: externalCss.replace(/}/, commaExists? "},"+externalCss + bigCss : "},"+ externalCss+ ","+bigCss),
             
         } 
       
@@ -169,7 +169,7 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: cssContent.replace(",,",",")
+        cssContent: cssContent
    }
 
 

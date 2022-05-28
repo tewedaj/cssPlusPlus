@@ -169,7 +169,7 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: cssContent.replace(",,",",")
+        cssContent: cssContent
    }
 
 
