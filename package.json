@@ -19,7 +19,12 @@
 		"onCommand:inlineCssChanger.reactJsNoNameChanger",
 		"onCommand:inlineCssChanger.reactJsWithName",
 		"onCommand:inlineCssChanger.reactJsUpdateExternal",
-		"onCommand:inlineCssChanger.htmlRandom"
+		"onCommand:inlineCssChanger.htmlRandom",
+		"onCommand:inlineCssChanger.htmlUpdateExternal",
+		"onCommand:inlineCssChanger.htmlWithName",
+		"onCommand:inlineCssChanger.AngularRandom",
+		"onCommand:inlineCssChanger.AngularWithName",
+		"onCommand:inlineCssChanger.AngularUpdate"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -55,6 +60,26 @@
 			{
 				"command": "inlineCssChanger.htmlRandom",
 				"title": "CssPlus: Html[Random]"
+			},
+			{
+				"command": "inlineCssChanger.htmlUpdateExternal",
+				"title": "CssPlus: Html[Update]"
+			},
+			{
+				"command": "inlineCssChanger.htmlWithName",
+				"title": "CssPlus: Html[Name]"
+			},
+			{
+				"command": "inlineCssChanger.AngularRandom",
+				"title": "CssPlus: Angular[Random] DEV"
+			},
+			{
+				"command": "inlineCssChanger.AngularWithName",
+				"title": "CssPlus: Angular[Name] DEV"
+			},
+			{
+				"command": "inlineCssChanger.AngularUpdate",
+				"title": "CssPlus: Angular[Update] DEV"
 			}
 		]
 	},
