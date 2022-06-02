@@ -201,12 +201,20 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			cssValue = cssValue.replace(cssValue.split("/")[cssValue.split("/").length-1],"");
 			cssValue = cssValue.replace(cssValue.split("/")[0],"");
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
+		var cssName = vscode.window.activeTextEditor.document.uri.toString();
+
+			cssName = cssName.split("/")[cssName.split("/").length - 1].replace("html","css");
+			
+			console.log("vvvvvvvvvvvvvvv: ", cssName);
+		
+			var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.css') });
+		console.log("vvvvvvvvvvvvvvv: ", activeEditorUri);
+
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri, cssName) });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -219,13 +227,13 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
 		var angularResponse = Angular.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),"import {styles} from './styles/styles.js'; \n" +angularResponse.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),angularResponse.pageContent);
 		});
-		console.log("AAAAAAAAAAAAAAA: ", angularResponse.cssContent);
+		console.log("after upload: ", angularResponse.cssContent);
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri,cssName ) });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -237,18 +245,25 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 
 	let AngularWithName = vscode.commands.registerCommand('inlineCssChanger.AngularWithName', async function(){
-
 		var pageContent = vscode.window.activeTextEditor.document.getText();
 		var cssValue = vscode.window.activeTextEditor.document.uri._fsPath.toString();
 			cssValue = cssValue.replace(cssValue.split("/")[cssValue.split("/").length-1],"");
 			cssValue = cssValue.replace(cssValue.split("/")[0],"");
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
+		var cssName = vscode.window.activeTextEditor.document.uri.toString();
+
+			cssName = cssName.split("/")[cssName.split("/").length - 1].replace("html","css");
+			
+			console.log("vvvvvvvvvvvvvvv: ", cssName);
+		
+			var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.css') });
+		console.log("vvvvvvvvvvvvvvv: ", activeEditorUri);
+
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri, cssName) });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -261,37 +276,40 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
 		var angularResponse = Angular.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),"import {styles} from './styles/styles.js'; \n" +angularResponse.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),angularResponse.pageContent);
 		});
-		console.log("AAAAAAAAAAAAAAA: ", angularResponse.cssContent);
+		console.log("after upload: ", angularResponse.cssContent);
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri,cssName ) });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
-
 
 	})
 
 
 	let AngularUpdate = vscode.commands.registerCommand('inlineCssChanger.AngularUpdate', async function(){
-
 		var pageContent = vscode.window.activeTextEditor.document.getText();
 		var cssValue = vscode.window.activeTextEditor.document.uri._fsPath.toString();
 			cssValue = cssValue.replace(cssValue.split("/")[cssValue.split("/").length-1],"");
 			cssValue = cssValue.replace(cssValue.split("/")[0],"");
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
+		var cssName = vscode.window.activeTextEditor.document.uri.toString();
+
+			cssName = cssName.split("/")[cssName.split("/").length - 1].replace("html","css");
+			
+			console.log("vvvvvvvvvvvvvvv: ", cssName);
+		
+			var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
-		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.css') });
+		var extenralCss = cssValue+"styles/styles.css";
+		console.log("vvvvvvvvvvvvvvv: ", activeEditorUri);
 
-		// var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
-		// var cssContentString = Buffer.from(cssContentOld).toString('utf8');
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri, cssName) });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -301,22 +319,19 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			var cssContentOld = "";
 			var cssContentString = "";
 		}
-
-
-
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
-		var AngularResponse = Angular.updateExternalCss(pageContent,cssContentString);
+		var angularResponse = Angular.updateExternalCss(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,AngularResponse.pageLine,0), AngularResponse.pageContent);
+			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),angularResponse.pageContent);
 		});
-		var cssContent = AngularResponse.cssContent;
+		console.log("after upload: ", angularResponse.cssContent);
+		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri,cssName ) });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
-
 
 	})
 

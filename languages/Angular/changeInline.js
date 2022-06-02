@@ -34,7 +34,7 @@ const updateExternalCss = (pageContent,cssContentS) =>{
     return {
         pageLine: pageLine,
          pageContent: editedPageContenet,
-         cssContent: cssContentd.replace(",,",",")
+         cssContent: cssContentd
     }
 
 }
@@ -46,7 +46,7 @@ const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     var    externalCssSingle =externalCss.split(name)[1];
     externalCssSingle =externalCssSingle.split("}")[0];
     var comma = lastCharIsComma(externalCssSingle);
-      return  externalCss.replace(externalCssSingle,comma?externalCssSingle +" \n "+parameters.split(";").join("; \n") : externalCssSingle +", \n "+parameters.split(";").join("; \n"));
+      return  externalCss.replace(externalCssSingle,externalCssSingle +" \n "+parameters.split(";").join("; \n"));
     }else{
         console.log("ERRRR: ");
     }
@@ -64,8 +64,8 @@ const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
         console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
         return{
             pageContent: pageContent,
-            cssContent: externalCss.replace(/}/, commaExists? "}," + bigCss : "},"+ ","+bigCss),
-            
+            cssContent: externalCss.replace(/}/, "} \n"+ bigCss ),
+        
         } 
       
     }
@@ -153,9 +153,9 @@ var isUpperCase = (character) => {
     for(var x = 1; x < inlineCss.length;x++){
         var name = getName(inlineCss[x-1],names);
             names.push(name);
-         cssContent = cssContent+ name.split(".")[1] +":{ \n "+
-         getCssContent(inlineCss[x]) 
-         +"}, \n";
+         cssContent = `${cssContent} .${name.replace(`"`,"").replace(`"`,"")}{ \n 
+        ${ getCssContent(inlineCss[x])}
+         } \n`;
        
          editedPageContenet =  removeInlineCss(editedPageContenet,inlineCss[x],name);   
 
@@ -180,7 +180,7 @@ var isUpperCase = (character) => {
    return {
        pageLine: pageLine,
         pageContent: pageContentDone,
-        cssContent: cssContent.replace(",,",",").split("=").join(":")
+        cssContent: cssContent.split(";").join("; \n")
    }
 
 
