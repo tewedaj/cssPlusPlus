@@ -2,7 +2,7 @@
 	"name": "inlineCssChanger",
 	"displayName": "CSS++",
 	"description": "Make writing React Native css a better experiance",
-	"version": "0.1.13",
+	"version": "0.1.14",
 	"icon": "nmnm.png",
 	"engines": {
 		"vscode": "^1.64.2"
@@ -18,7 +18,13 @@
 		"onCommand:inlineCssChanger.inlineCssChangerExternalUpdate",
 		"onCommand:inlineCssChanger.reactJsNoNameChanger",
 		"onCommand:inlineCssChanger.reactJsWithName",
-		"onCommand:inlineCssChanger.reactJsUpdateExternal"
+		"onCommand:inlineCssChanger.reactJsUpdateExternal",
+		"onCommand:inlineCssChanger.htmlRandom",
+		"onCommand:inlineCssChanger.htmlUpdateExternal",
+		"onCommand:inlineCssChanger.htmlWithName",
+		"onCommand:inlineCssChanger.AngularRandom",
+		"onCommand:inlineCssChanger.AngularWithName",
+		"onCommand:inlineCssChanger.AngularUpdate"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -50,6 +56,30 @@
 			{
 				"command": "inlineCssChanger.reactJsUpdateExternal",
 				"title": "CssPlus: React-JS[Update]"
+			},
+			{
+				"command": "inlineCssChanger.htmlRandom",
+				"title": "CssPlus: Html[Random]"
+			},
+			{
+				"command": "inlineCssChanger.htmlUpdateExternal",
+				"title": "CssPlus: Html[Update]"
+			},
+			{
+				"command": "inlineCssChanger.htmlWithName",
+				"title": "CssPlus: Html[Name]"
+			},
+			{
+				"command": "inlineCssChanger.AngularRandom",
+				"title": "CssPlus: Angular[Random] DEV"
+			},
+			{
+				"command": "inlineCssChanger.AngularWithName",
+				"title": "CssPlus: Angular[Name] DEV"
+			},
+			{
+				"command": "inlineCssChanger.AngularUpdate",
+				"title": "CssPlus: Angular[Update] DEV"
 			}
 		]
 	},
