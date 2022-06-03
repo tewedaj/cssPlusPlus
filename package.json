@@ -71,15 +71,15 @@
 			},
 			{
 				"command": "inlineCssChanger.AngularRandom",
-				"title": "CssPlus: Angular[Random] DEV"
+				"title": "CssPlus: Angular[Random]"
 			},
 			{
 				"command": "inlineCssChanger.AngularWithName",
-				"title": "CssPlus: Angular[Name] DEV"
+				"title": "CssPlus: Angular[Name]"
 			},
 			{
 				"command": "inlineCssChanger.AngularUpdate",
-				"title": "CssPlus: Angular[Update] DEV"
+				"title": "CssPlus: Angular[Update]"
 			}
 		]
 	},

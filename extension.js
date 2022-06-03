@@ -132,7 +132,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
 		var htmlResponse = htmlD.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0),htmlResponse.pageContent.repalce(`<link rel="stylesheet" href="./styles/styles.css">`,"").replace("<head>",`<head> \n <link rel="stylesheet" href="./styles/styles.css">`));
+			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0),htmlResponse.pageContent.replace(`<link rel="stylesheet" href="./styles/styles.css">`,"")?.replace("<head>",`<head> \n <link rel="stylesheet" href="./styles/styles.css">`));
 		});
 		console.log("AAAAAAAAAAAAAAA: ", htmlResponse.cssContent);
 		var cssContent = htmlResponse.cssContent;
@@ -177,7 +177,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
 		var htmlResponse = htmlD.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
-			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0),htmlResponse.pageContent.repalce(`<link rel="stylesheet" href="./styles/styles.css">`,"").replace("<head>",`<head> \n <link rel="stylesheet" href="./styles/styles.css">`));
+			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0),htmlResponse.pageContent.replace(`<link rel="stylesheet" href="./styles/styles.css">`,"").replace("<head>",`<head> \n <link rel="stylesheet" href="./styles/styles.css">`));
 		});
 		console.log("AAAAAAAAAAAAAAA: ", htmlResponse.cssContent);
 		var cssContent = htmlResponse.cssContent;
