@@ -33,6 +33,9 @@ Angular and HTML support Finally added!!! :)
 I really hope you enjoy this, i have managed to save soo much time with it and i hope you do too! 
 Thanks for using this
 
+### v0.1.17
+Bug Fix!!
+
 ## There are 3 commands for Each Framework:
 <img src='https://tiinstitution.com/Screenshot%20from%202022-05-28%2022-42-34.png' />
  Commands are run by pressing [ctrl+p] and then right ">" you can enter your desired command right after that
