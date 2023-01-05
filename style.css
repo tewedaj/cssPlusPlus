@@ -42,13 +42,22 @@ body {
     text-align: right;
 }
 
-.landing-page .header-area .links li {
+.landing-page .header-area .links li{
     display: inline-block;
     margin-left: 30px;
     color: #5d5d5d;
     cursor: pointer;
 }
-
+/* for the links too */
+.landing-page .header-area .links li a{
+    display: inline-block;
+    margin-left: 30px;
+    color: #5d5d5d;
+    cursor: pointer;
+}
+.landing-page .header-area .links li a:hover {
+    color: #1fd84d;
+}
 .landing-page .header-area .links li:last-child {
     border: 0;
     padding: 10px 18px;
@@ -120,3 +129,51 @@ body {
 }
 
 /* End Landing Page */
+/* intro-section starts here */
+.intro-section
+{
+    font-family: 'Titillium Web'; 
+    font-size: 22px;
+}
+/* intro-section ends here */
+/* About me starts here */
+/* About me ends here */
+/* ==== SIMPLE FOOTER ==== */
+
+footer {
+    background: url('https://orange.codeberryschool.com/content/images/project-assets/simple-footer.png') repeat center;
+    /* background-color: hsl(300, 100%, 0%); */
+    display: table;
+    width: 100vw;
+    height: 8rem;
+    text-align: center;
+    padding: 1rem;
+    font-family: 'Arial', sans-serif;
+    font-size: .875rem;
+  }
+  
+  .wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  footer small {
+    color: #ccc;
+    letter-spacing: .025rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  
+  .footer-nav a {
+    color: #c74f78;
+    text-decoration: none;
+    margin: 0 .5rem;
+    display: inline-block;
+  }
+  
+  .footer-nav a:hover {
+    color: #f26896;
+    transition: color .15s ease-in-out;
+  }
+  
+  
