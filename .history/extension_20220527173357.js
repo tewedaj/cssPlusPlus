@@ -12,7 +12,7 @@ const ReactJs = require('./languages/ReactJs/changeInline.js');
  */
 function activate(context) {
 
-console.log('Congratulations, your extension "inlineCssChanger" is now active!');
+
 
 let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', function () {
 		vscode.window.showInformationMessage('Hello World from react-native-css!');
@@ -96,7 +96,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 //Update  React Native inline CSS with out Name
 let ReactNativeNoName = vscode.commands.registerCommand('inlineCssChanger.inlineCssChangerUpdateNoName',function(){
 	var pageContent = vscode.window.activeTextEditor.document.getText();
-	console.log("CSScONTENT: ", pageContent);
+	
 var reacNativeCss = ReactNative.changeInlineRandom(pageContent);
 	vscode.window.activeTextEditor.edit((editBuilder) => {
 		editBuilder.replace(new vscode.Range(0,0,reacNativeCss.pageLine,0),reacNativeCss.pageContent);

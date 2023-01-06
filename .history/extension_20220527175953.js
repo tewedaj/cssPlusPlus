@@ -12,7 +12,7 @@ const ReactJs = require('./languages/ReactJs/changeInline.js');
  */
 function activate(context) {
 
-console.log('Congratulations, your extension "inlineCssChanger" is now active!');
+
 
 let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', function () {
 		vscode.window.showInformationMessage('Hello World from react-native-css!');
@@ -53,7 +53,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var extenralCss = activeEditorUri+"styles/styles.js";
 		var cssContentOld = await vscode.workspace.fs.readFile(extenralCss);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var reactJs = ReactJs.changeInline(pageContent,cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from './styles/styles.js'; \n" +reactJs.pageContent);

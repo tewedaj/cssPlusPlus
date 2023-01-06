@@ -15,7 +15,7 @@ var cssMap ={
 const kebabCase = (str) => {
     var newStr = str;
     for(var x = 0; x < str.split(":").length;x++){
-       console.log("HHAHHAHHAHA: ", str.split(":")[0].split(",")[1]);
+       
         newStr = newStr.replace(str.split(":")[0].split(",")[1],str.match(/[A-Z][a-z]+/g)
         .join('-')
         .toLowerCase())

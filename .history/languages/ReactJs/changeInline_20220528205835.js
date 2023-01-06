@@ -11,15 +11,15 @@ const updateExternalCss = (pageContent,cssContentS) =>{
     
     // var cssContentNotClean = cssContent;
     var pageLine = pageContent.split("\n").length;
-    console.log("ok ok am not ok: y] ", cssContentNotClean);
+    
 
     for(var x = 1; x < cssContentNotClean.length;x++){
         if(isExternalCss(cssContentNotClean[x])){
-            console.log("ok ok am not ok: ");
+            
             editedPageContenet = removeParameters(editedPageContenet,cssContentNotClean[x]);
             var name =  getExternalCssName(cssContentNotClean[x]);
-            console.log("ok ok am not ok: ", name);
-            console.log("ok ok am not o1: ", parameters);
+            
+            
 
 
             var parameters = getParameters(cssContentNotClean[x]);
@@ -43,10 +43,10 @@ const addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
     if(externalCss.includes(name) && parameters != '' && parameters != null){
     var    externalCssSingle =externalCss.split(name)[1];
     externalCssSingle =externalCssSingle.split("}")[0];
-    console.log("ELELELELELE: " , externalCss)
+    
       return  externalCss.replace(externalCssSingle,externalCssSingle+", \n "+parameters.split(",").join(", \n"));
     }else{
-        console.log("ERRRR");
+        
     }
     return externalCss;
 }
@@ -55,11 +55,11 @@ const addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
 //   externalCss = externalCss.split("})")[0];
    
     if(externalCss.length > 1){
-        console.log("KKKKK: " , externalCss);
+        
         var commaExists = lastCharIsComma(externalCss);
       //   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
-        console.log("abbbbb: ", commaExists);
-        console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
+        
+        
         return{
             pageContent: pageContent,
             cssContent: externalCss.replace(/}/, commaExists? "}," + bigCss : "},"+ ","+bigCss),
@@ -103,27 +103,27 @@ const getExternalCssName = (cssContent) => {
 
 // changeCamleCase = (cssContent) => {
 //     var changedCssContent = cssContent;
-//     console.log("THE LENGTH: " ,cssContent.length );
+//     
 //     for(var x = 0; x < cssContent.length; x++){
-//         // console.log("okok: ", cssContent[x])
+//         // 
 //         if(isChar(cssContent[x])){
 //             if(isUpperCase(cssContent[x])){
-//                 console.log("not ok");
+//                 
 //                 changedCssContent = changedCssContent.replace(changedCssContent[x],"-"+changedCssContent[x]);
 //                 // changedCssContent[x] = "-"+changedCssContent[x];
-//                 console.log(changedCssContent);
+//                 
                 
 //             }
 //         }
       
 //     }
-// console.log("THIS IS CSSCONTENT: ", cssContent)
+// 
 //     return changedCssContent;
 // }
 
 var isUpperCase = (character) => { 
     if(character.toUpperCase() === character){
-    console.log(character);
+    
 
         //upercase
         return true;
@@ -159,7 +159,7 @@ var isUpperCase = (character) => {
     }
 
     if(styleSheetExternalContent.length > 0){
-        console.log("AKAKAKAKA");
+        
         editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent,cssContent);
             var pageContentDone = editedPageContenet.pageContent;
             cssContent = editedPageContenet.cssContent;
@@ -240,7 +240,7 @@ var changeInlineRandom = (pageContent) =>{
         }
         
         if(styleSheetExists(pageContent)){
-            console.log("AKAKAKAKA");
+            
             editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
                 var pageContentDone = editedPageContenet;
         }else{
@@ -269,7 +269,7 @@ var getName = (inlineCss,names) => {
 
 var styleSheetExists = (pageContent) =>{
     if(pageContent.split("StyleSheet.create({").length > 1){
-        console.log("true: ",pageContent.split("StyleSheet.create({").length.toString() );
+        
         return true;
     }else{
         return false;

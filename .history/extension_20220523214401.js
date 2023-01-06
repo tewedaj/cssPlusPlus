@@ -13,7 +13,7 @@ const { ReadableByteStreamController } = require('stream/web');
  */
 function activate(context) {
 
-console.log('Congratulations, your extension "inlineCssChanger" is now active!');
+
 
 let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', function () {
 		vscode.window.showInformationMessage('Hello World from react-native-css!');
