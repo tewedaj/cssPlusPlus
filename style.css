@@ -109,8 +109,7 @@ body {
     cursor: pointer;
     color: #FFF;
     /* color: hsl(220, 36%, 28%); */
-    background-color: hsl(0, 0%, 0%);
-    border: white 1px solid;
+    background-color: hsl(0, 0%, 0%); border: white 1px solid;
 }
 
 .landing-page .image {
@@ -137,6 +136,20 @@ body {
 }
 /* intro-section ends here */
 /* About me starts here */
+.about-tools
+{
+    padding: 10px;
+    border: 2px black dotted;
+}
+.about-mail
+{
+    width: 300px;
+}
+.about-mail img:hover
+{
+    transform: scale(1.2);
+    border: rgba(255, 196, 0, 0.89) 1px solid;
+}
 /* About me ends here */
 /* ==== SIMPLE FOOTER ==== */
 
