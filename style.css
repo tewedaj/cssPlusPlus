@@ -137,11 +137,16 @@ body {
     */
 }
 /* intro-section ends here */
+/* Features starts here */
+#features-container
+{
+    padding: 40px;
+}
+/* Features ends here */
 /* About me starts here */
 .about-tools
 {
     padding: 10px;
-    border: 2px black dotted;
 }
 .about-mail
 {
