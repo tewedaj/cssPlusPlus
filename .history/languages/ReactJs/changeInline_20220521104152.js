@@ -9,14 +9,14 @@ updateExternalCss = (pageContent) =>{
     var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
     var cssContentNotClean = pageContent.split("style={");
     var pageLine = pageContent.split("\n").length;
-    console.log("ok ok am not ok: y] ", cssContentNotClean);
+    
 
     for(var x = 1; x < cssContentNotClean.length;x++){
         if(isExternalCss(cssContentNotClean[x])){
-            console.log("ok ok am not ok: ");
+            
         
             var name =  getExternalCssName(cssContentNotClean[x]);
-            console.log("ok ok am not ok: ", name);
+            
 
             var parameters = getParameters(cssContentNotClean[x]);
              editedPageContenet = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
@@ -24,7 +24,7 @@ updateExternalCss = (pageContent) =>{
           }
 
     }
-    console.log(editedPageContenet);
+    
 
     return {
         pageLine: pageLine,
@@ -45,11 +45,11 @@ addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
 
 addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
   externalCss = externalCss.split("})")[0];
-  console.log("KKKKK: " , externalCss);
+  
   var commaExists = lastCharIsComma(externalCss);
 //   var commaExists = externalCss.trim().charAt(externalCss.trim().length-1) == ","?  true : false;
-  console.log("abbbbb: ", commaExists);
-  console.log("AMMMM: ",externalCss.trim().charAt(externalCss.trim().length-1) );
+  
+  
   return pageContent.replace(externalCss, commaExists? externalCss + bigCss : externalCss+ ","+bigCss);
 }
 
@@ -87,23 +87,23 @@ getExternalCssName = (cssContent) => {
 
 changeCamleCase = (cssContent) => {
     var changedCssContent = cssContent.trim();
-    console.log("THE LENGTH: " ,cssContent.trim().length );
+    
     for(var x = 0; x < cssContent.trim().length; x++){
-        // console.log("okok: ", cssContent[x])
+        // 
         if(isChar(cssContent[x])){
             if(isUpperCase(cssContent[x])){
-                // console.log("not ok");
+                // 
                 changedCssContent = changedCssContent.replace(changedCssContent[x],"-"+changedCssContent[x]);
             }
         }
       
     }
-console.log("THIS IS CSSCONTENT: ", cssContent)
+
     return changedCssContent;
 }
 
 var isUpperCase = (character) => { 
-    console.log(character);
+    
     if(character.toUpperCase() === character){
         //upercase
         return true;
@@ -139,7 +139,7 @@ var isUpperCase = (character) => {
     }
 
     // if(styleSheetExists(pageContent)){
-    //     console.log("AKAKAKAKA");
+    //     
     //     editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
     //         var pageContentDone = editedPageContenet;
     // }else{
@@ -215,7 +215,7 @@ var changeInlineRandom = (pageContent) =>{
         }
         
         if(styleSheetExists(pageContent)){
-            console.log("AKAKAKAKA");
+            
             editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
                 var pageContentDone = editedPageContenet;
         }else{
@@ -244,7 +244,7 @@ var getName = (inlineCss,names) => {
 
 var styleSheetExists = (pageContent) =>{
     if(pageContent.split("StyleSheet.create({").length > 1){
-        console.log("true: ",pageContent.split("StyleSheet.create({").length.toString() );
+        
         return true;
     }else{
         return false;

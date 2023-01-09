@@ -15,12 +15,12 @@ var cssMap ={
 const kebabCase = (str) => {
     var newStr = str;
     for(var x = 0; x < str.split(":").length;x++){
-       console.log("HHAHHAHHAHA: ", str.split(":")[x].split(",")[1]);
-       console.log("fgdh: ", str.split(":")[x].split(",")[1]);
+       
+       
         if(str.split(":")[x].split(",")[1]){
-console.log("this is undefined");
+
         }else{
-            console.log("this is not undefiend");
+            
             newStr = newStr.replace(str.split(":")[x].split(",")[1],str.split(":")[x].split(",")[1].match(/[A-Z][a-z]+/g)
             .join('-')
             .toLowerCase())

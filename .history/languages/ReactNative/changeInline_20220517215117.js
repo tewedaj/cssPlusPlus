@@ -9,14 +9,14 @@ updateExternalCss = (pageContent) =>{
     var styleSheetExternalContent = pageContent.split("StyleSheet.create({");
     var cssContentNotClean = pageContent.split("style={");
     var pageLine = pageContent.split("\n").length;
-    console.log("ok ok am not ok: y] ", cssContentNotClean);
+    
 
     for(var x = 1; x < cssContentNotClean.length;x++){
         if(isExternalCss(cssContentNotClean[x])){
-            console.log("ok ok am not ok: ");
+            
         
             var name =  getExternalCssName(cssContentNotClean[x]);
-            console.log("ok ok am not ok: ", name);
+            
 
             var parameters = getParameters(cssContentNotClean[x]);
              editedPageContenet = addCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],name,parameters);
@@ -24,7 +24,7 @@ updateExternalCss = (pageContent) =>{
           }
 
     }
-    console.log(editedPageContenet);
+    
 
     return {
         pageLine: pageLine,
@@ -45,9 +45,9 @@ addCssToExternalCss = (pageContent,externalCss,name,parameters) =>{
 
 addBigCssToExternalCss = (pageContent,externalCss,bigCss) => {
   externalCss = externalCss.split("})")[0];
-  console.log("KKKKK: " , externalCss);
+  
   var commaExists = externalCss[externalCss.length-1] == ","?  true : false;
-  console.log("abbbbb: ", commaExists);
+  
   return pageContent.replace(externalCss, commaExists? externalCss + bigCss : externalCss+ ","+bigCss);
 }
 
@@ -158,7 +158,7 @@ var changeInlineRandom = (pageContent) =>{
         }
         
         if(styleSheetExists(pageContent)){
-            console.log("AKAKAKAKA");
+            
             editedPageContenet = addBigCssToExternalCss(editedPageContenet,styleSheetExternalContent[1],cssContent);
                 var pageContentDone = editedPageContenet;
         }else{

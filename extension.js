@@ -14,7 +14,7 @@ const Angular = require('./languages/Angular/changeInline.js');
  */
 function activate(context) {
 
-console.log('Congratulations, your extension "inlineCssChanger" is now active!');
+
 
 let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', function () {
 		vscode.window.showInformationMessage('Hello World from react-native-css!');
@@ -57,7 +57,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var reactJs = ReactJs.changeInline(pageContent,cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from './styles/styles.js'; \n" +reactJs.pageContent);
@@ -90,7 +90,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var reactJs = ReactJs.changeInline(pageContent,cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0),"import {styles} from './styles/styles.js'; \n" +reactJs.pageContent);
@@ -129,12 +129,12 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			var cssContentOld = "";
 			var cssContentString = "";
 		}
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var htmlResponse = htmlD.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0),htmlResponse.pageContent.replace(`<link rel="stylesheet" href="./styles/styles.css">`,"")?.replace("<head>",`<head> \n <link rel="stylesheet" href="./styles/styles.css">`));
 		});
-		console.log("AAAAAAAAAAAAAAA: ", htmlResponse.cssContent);
+		
 		var cssContent = htmlResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
@@ -174,12 +174,12 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			var cssContentOld = "";
 			var cssContentString = "";
 		}
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var htmlResponse = htmlD.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0),htmlResponse.pageContent.replace(`<link rel="stylesheet" href="./styles/styles.css">`,"").replace("<head>",`<head> \n <link rel="stylesheet" href="./styles/styles.css">`));
 		});
-		console.log("AAAAAAAAAAAAAAA: ", htmlResponse.cssContent);
+		
 		var cssContent = htmlResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
@@ -205,14 +205,14 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 			cssName = cssName.split("/")[cssName.split("/").length - 1].replace("html","css");
 			
-			console.log("vvvvvvvvvvvvvvv: ", cssName);
+			
 		
 			var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		console.log("vvvvvvvvvvvvvvv: ", activeEditorUri);
+		
 
 		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "), cssName) });
 
@@ -224,12 +224,12 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			var cssContentOld = "";
 			var cssContentString = "";
 		}
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var angularResponse = Angular.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),angularResponse.pageContent);
 		});
-		console.log("after upload: ", angularResponse.cssContent);
+		
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
@@ -254,14 +254,14 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 			cssName = cssName.split("/")[cssName.split("/").length - 1].replace("html","css");
 			
-			console.log("vvvvvvvvvvvvvvv: ", cssName);
+			
 		
 			var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		console.log("vvvvvvvvvvvvvvv: ", activeEditorUri);
+		
 
 		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "), cssName) });
 
@@ -273,12 +273,12 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			var cssContentOld = "";
 			var cssContentString = "";
 		}
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var angularResponse = Angular.changeInline(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),angularResponse.pageContent);
 		});
-		console.log("after upload: ", angularResponse.cssContent);
+		
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
@@ -300,14 +300,14 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 			cssName = cssName.split("/")[cssName.split("/").length - 1].replace("html","css");
 			
-			console.log("vvvvvvvvvvvvvvv: ", cssName);
+			
 		
 			var activeEditorUri = vscode.window.activeTextEditor.document.uri.toString();
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[activeEditorUri.split("/").length-1],"");
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		console.log("vvvvvvvvvvvvvvv: ", activeEditorUri);
+		
 
 		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "), cssName) });
 
@@ -319,12 +319,12 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			var cssContentOld = "";
 			var cssContentString = "";
 		}
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var angularResponse = Angular.updateExternalCss(pageContent?pageContent : "",cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,angularResponse.pageLine,0),angularResponse.pageContent);
 		});
-		console.log("after upload: ", angularResponse.cssContent);
+		
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
@@ -354,7 +354,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var reactJs = ReactJs.updateExternalCss(pageContent,cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,reactJs.pageLine,0), reactJs.pageContent);
@@ -400,7 +400,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 
 
 
-		console.log("AAAAAAAAAAAAAAAA: ", cssContentString);
+		
 		var htmlResponse = htmlD.updateExternalCss(pageContent,cssContentString);
 		vscode.window.activeTextEditor.edit((editBuilder) => {
 			editBuilder.replace(new vscode.Range(0,0,htmlResponse.pageLine,0), htmlResponse.pageContent);
