@@ -53,7 +53,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.js') });
 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
@@ -65,7 +65,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.js') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -86,7 +86,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.js') });
 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
@@ -98,7 +98,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.js') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -119,7 +119,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.css') });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -138,8 +138,9 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = htmlResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%3A").join(":")+"styles/", 'styles.css') });
 	
+		console.log("Location: ", fileLocation);
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
 
@@ -164,7 +165,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.css";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.css') });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -183,7 +184,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = htmlResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.css') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -214,7 +215,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var extenralCss = cssValue+"styles/styles.css";
 		
 
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "), cssName) });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://"), cssName) });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -233,7 +234,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "),cssName ) });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://"),cssName ) });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -263,7 +264,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var extenralCss = cssValue+"styles/styles.css";
 		
 
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "), cssName) });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://"), cssName) });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -282,7 +283,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "),cssName ) });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://"),cssName ) });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -309,7 +310,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var extenralCss = cssValue+"styles/styles.css";
 		
 
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "), cssName) });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://"), cssName) });
 
 		try{
 			var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
@@ -328,7 +329,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = angularResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" "),cssName ) });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://"),cssName ) });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -350,7 +351,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.js') });
 
 		var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		var cssContentString = Buffer.from(cssContentOld).toString('utf8');
@@ -362,7 +363,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = reactJs.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.js') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.js') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
@@ -384,7 +385,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 			activeEditorUri = activeEditorUri.replace(activeEditorUri.split("/")[0],"");
 			var styleUri = activeEditorUri + "/styles/";
 		var extenralCss = cssValue+"styles/styles.js";
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.css') });
 
 		// var cssContentOld = await vscode.workspace.fs.readFile(fileLocation);
 		// var cssContentString = Buffer.from(cssContentOld).toString('utf8');
@@ -408,7 +409,7 @@ let disposable = vscode.commands.registerCommand('inlineCssChanger.helloWorld', 
 		var cssContent = htmlResponse.cssContent;
 		var writeWord = Buffer.from(cssContent,'utf8');
 		var folderUri = vscode.workspace.workspaceFolders[0].uri;
-		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ")+"styles/", 'styles.css') });
+		var fileLocation = folderUri.with({path: posix.join(activeEditorUri.split("%20").join(" ").split("c%3a").join("C://")+"styles/", 'styles.css') });
 	
 		await vscode.workspace.fs.writeFile(fileLocation,writeWord);
 		vscode.window.showInformationMessage("It's done :)");
